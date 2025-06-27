@@ -4471,5 +4471,24 @@ class PlayState extends MusicBeatState
 		startLuasNamed('stages/' + curStage + '.lua', "stage"); #end
 		#if HSCRIPT_ALLOWED if (!onlyLuas) startHScriptsNamed('stages/' + curStage + '.hx', "stage"); #end
 		#end
-	}	
+	}
+    
+    static function numberWithCommas(x:Int):String {//I'M A GENIUS!!
+        var integerPart = Std.string(x);
+
+        var result = new StringBuf();
+        var length = integerPart.length;
+        for (i in 0...length) {
+            if (i > 0 && (length - i) % 3 == 0) {
+                result.add(',');
+            }
+            result.add(integerPart.charAt(i));
+        }
+
+        return Std.string(result);
+    }
+	
+	function inRange(a:Float, b:Float, tolerance:Float){
+		return (a <= b + tolerance && a >= b - tolerance);
+	}
 }
