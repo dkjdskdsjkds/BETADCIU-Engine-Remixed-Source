@@ -10,7 +10,7 @@ import states.PlayState;
 using StringTools;
 
 //Most of the Original code from Mr.Bruh (mr.bruh69)
-//Ported to haxe and edited by glowsoony //gracias glow :mirada_sexy:
+//Ported to haxe and edited by glowsoony // thanks man!
 
 class CoverSprite extends FlxSprite
 {
@@ -25,7 +25,7 @@ class CoverSprite extends FlxSprite
   public function initFrames(i:Int, hcolor:String)
   {
     this.skin = "holdCover";
-    this.frames = Paths.getSparrowAtlas('HoldNoteEffect/holdCover$hcolor');
+    this.frames = Paths.getSparrowAtlas('HoldCovers/holdCover$hcolor');
   }
 
   public function initAnimations(i:Int, hcolor:String)
@@ -76,7 +76,8 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
     if (note == null) return;
     var noteData:Int = note.noteData;
     var isSus:Bool = note.isSustainNote;
-    var isHoldEnd:Bool = note.animation.curAnim.name.endsWith('end');
+    var isHoldEnd:Bool = false;
+    if (note.animation.curAnim != null) isHoldEnd = note.animation.curAnim.name.endsWith('end');
 
     if (enabled && isReady)
     {
@@ -133,10 +134,10 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
   {
       var timer:FlxTimer = new FlxTimer();
       var tag:String = "hideHoldCoverFromStrum" + data;
-      PlayState.instance.modchartTimers.set(tag, timer.start(delay, function(timer:FlxTimer)
+      PlayState.instance.variables.set(tag, timer.start(delay, function(timer:FlxTimer)
       {
         this.members[data].visible = false;
-        PlayState.instance.modchartTimers.remove(tag);
+        PlayState.instance.variables.remove(tag);
       }));
   }
 

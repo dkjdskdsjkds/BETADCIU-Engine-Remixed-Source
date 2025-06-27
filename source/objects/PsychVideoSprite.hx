@@ -1,6 +1,6 @@
 package objects;
 
-import hxvlc.flixel.FlxVideoSprite as VideoSprite;
+import hxvlc_custom.flixel.FlxVideoSprite as VideoSprite;
 //Borrowed from Sonic Legacy for Free 4 Pirates
 
 //i wanted a few things -data
