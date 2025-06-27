@@ -1273,6 +1273,7 @@ class PlayState extends MusicBeatState
 	public dynamic function updateScoreText()
 	{
 		var str:String = Language.getPhrase('rating_$ratingName', ratingName);
+        var percent:Float = CoolUtil.floorDecimal(ratingPercent * 100, 2);
 		if(totalPlayed != 0)
 		{
 			var percent:Float = CoolUtil.floorDecimal(ratingPercent * 100, 2);
@@ -1280,7 +1281,13 @@ class PlayState extends MusicBeatState
 		}
 
 		var tempScore:String;
-		if(!instakillOnMiss) tempScore = Language.getPhrase('score_text', '( Score: {1} • Accuracy: % • Combo Breaks: • Rank: {3} )', [numberWithCommas(songScore), ratingPercent * 100, songMisses, ratingFC]);
+		if(!instakillOnMiss) tempScore = Language.getPhrase('score_text', '( Score: {1} • Accuracy: {2}% • Combo Breaks: {3} • Rank: {4} )', 
+        [
+            numberWithCommas(songScore), 
+            percent, 
+            songMisses,
+            Language.getPhrase(ratingFC)
+        ]);
 		else tempScore = Language.getPhrase('score_text_instakill', 'Score: {1} | Rating: {2}', [songScore, str]);
 		scoreTxt.text = tempScore;
 	}
@@ -4472,7 +4479,7 @@ class PlayState extends MusicBeatState
 		#if HSCRIPT_ALLOWED if (!onlyLuas) startHScriptsNamed('stages/' + curStage + '.hx', "stage"); #end
 		#end
 	}
-    
+
     static function numberWithCommas(x:Int):String {//I'M A GENIUS!!
         var integerPart = Std.string(x);
 
