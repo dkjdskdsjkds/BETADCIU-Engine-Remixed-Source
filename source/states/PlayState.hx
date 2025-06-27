@@ -1280,7 +1280,7 @@ class PlayState extends MusicBeatState
 		}
 
 		var tempScore:String;
-		if(!instakillOnMiss) tempScore = Language.getPhrase('score_text', 'Score: {1} | Misses: {2} | Rating: {3}', [songScore, songMisses, str]);
+		if(!instakillOnMiss) tempScore = Language.getPhrase('score_text', '( Score: {1} • Accuracy: % • Combo Breaks: • Rank: {3} )', [numberWithCommas(songScore), ratingPercent * 100, songMisses, ratingFC]);
 		else tempScore = Language.getPhrase('score_text_instakill', 'Score: {1} | Rating: {2}', [songScore, str]);
 		scoreTxt.text = tempScore;
 	}
