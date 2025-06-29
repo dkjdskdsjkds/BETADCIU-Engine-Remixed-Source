@@ -128,7 +128,7 @@ class DeprecatedFunctions
 				left_color = CoolUtil.colorFromString(left);
 			if (right != null && right != '')
 				right_color = CoolUtil.colorFromString(right);
-			PlayState.instance.healthBar.setColors(left_color, right_color);
+            PlayState.instance.healthBar.setColors(left_color, right_color);
 		});
 		Lua_helper.add_callback(lua, "luaSpritePlayAnimation", function(tag:String, name:String, forced:Bool = false) {
 			FunkinLua.luaTrace("luaSpritePlayAnimation is deprecated! Use playAnim instead", false, true);

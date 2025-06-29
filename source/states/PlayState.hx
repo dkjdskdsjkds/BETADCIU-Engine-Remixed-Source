@@ -245,7 +245,7 @@ class PlayState extends MusicBeatState
 	public var playDad:Bool = true;
 	public var playBF:Bool = true;
 
-	public var iconP1:HealthIcon;
+    public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
@@ -1919,7 +1919,7 @@ class PlayState extends MusicBeatState
 			else if (controls.justPressed('debug_2'))
 				openCharacterEditor();
 		}
-
+    
 		if (healthBar.bounds.max != null && health > healthBar.bounds.max)
 			health = healthBar.bounds.max;
 
@@ -2079,7 +2079,7 @@ class PlayState extends MusicBeatState
 		setOnScripts('botPlay', cpuControlled);
 		callOnScripts('onUpdatePost', [elapsed]);
 	}
-
+    
 	// Health icon updaters
 	public dynamic function updateIconsScale(elapsed:Float)
 	{

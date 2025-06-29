@@ -85,6 +85,12 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		BOOL);
 		addOption(option);
 
+        var option:Option = new Option('Psych UI',
+			"If checked, changes the UI to resemble Psych Engine's.",
+			'psychUI',
+            BOOL);
+		addOption(option);
+
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
 			'hideHud',
